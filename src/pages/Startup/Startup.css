@@ -1,0 +1,42 @@
+.startup-container{
+    display: flex;
+}
+
+.startup-image-container{
+    width: 60%;
+    height: 100%;
+}
+
+.startup-image{
+    width: 100%;
+    height: 100%;
+}
+
+.startup-content-container{
+    /* background-color: bisque; */
+    width: 40%;
+    display: flex;
+    justify-content: center;
+}
+
+.startup-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    /* background-color: rgb(54, 236, 175); */
+}
+
+.signup, .login, .login-as-guest{
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    border-radius: 1rem;
+    margin-bottom: 0.5rem;
+    color: white;
+    font-size: large;
+    width: 10rem;
+    height: 2rem;
+    align-content: center;
+}
+
