@@ -1,0 +1,29 @@
+.post-card{
+    display: flex;
+    margin: 0.5rem;
+    border-bottom: 1px solid white;
+    
+    /* justify-content: space-evenly; */
+}
+
+.profile-picture{
+    margin-right: 1rem;
+}
+
+.post-header{
+    display: flex;
+}
+
+.post-header-name{
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.post-content{
+    margin-bottom: 0.5rem;
+}
+.post-actions{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
