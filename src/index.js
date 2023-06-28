@@ -1,9 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
 import { makeServer } from "./server";
+import { DataProvider } from './contexts/DataContext';
+import { AuthProvider } from './contexts/AuthContext.jsx';
 
 // Call make Server
 makeServer();
@@ -11,7 +14,13 @@ makeServer();
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <DataProvider>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </DataProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
