@@ -1,0 +1,6 @@
+.layout-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-left: 1rem;
+}
