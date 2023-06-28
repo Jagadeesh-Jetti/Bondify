@@ -1,0 +1,12 @@
+.home-side-nav {
+    display: flex;
+    flex: wrap;
+    width: 37%;
+    /* max-height: 50rem; */
+    /* min-height: 50rem; */
+    height: 50rem;
+}
+
+.home-side-nav-content{
+    margin-left: 40%;
+}
