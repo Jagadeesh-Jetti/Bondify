@@ -8,12 +8,16 @@ import { PostsLayout } from "../../components/LayoutComponents/PostsLayout/Posts
 
 export const Bookmarks = () => {
   const { dataState } = useContext(DataContext);
-  console.log(dataState.bookmarks);
 
+  const bookmarkedPosts = dataState.bookmarks.map((bookmark) =>
+    dataState.posts.filter((post) => post._id === bookmark._id)
+  );
+  console.log(bookmarkedPosts);
+  // console.log(bookmarkedPosts);
   return (
     <div className="bookmarks-container">
       <LeftNavLayout />
-      <PostsLayout data={dataState?.bookmarks} />
+      <PostsLayout data={bookmarkedPosts} />
       <RightSideLayout />
     </div>
   );
