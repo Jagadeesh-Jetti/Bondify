@@ -1,0 +1,103 @@
+.profile-container{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+    color: white;
+    background-color: 	#141d26;
+}
+.profile-middle-container{
+    width: 80%;
+    border: 1px solid white;
+}
+.profilepage-header-name-container{
+    height: 3rem;
+    font-size: large;
+    font-weight: bold;
+}
+.profilepage-header-name{
+    margin: 0.5rem;
+}
+
+.profilepage-profile-banner{
+    height: 13rem;
+    background-color: rgb(160, 162, 170);
+    border: 1px solid white;
+}
+.profilepage-profile-content{
+    /* background-color: beige; */
+    border: 1px solid white;
+    height: 14rem;
+}
+.profilepage-profile-content-dp-edit{
+    display: flex;
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+.profilepage-profile-content-dp-parent-container{
+    background-color: 	#141d26;
+    width: 7rem;
+    height: 7rem;
+    margin: 1rem;
+    margin-top: -3.5rem;
+    border-radius: 3.5rem;
+}
+.profilepage-profile-content-dp-container{
+    background-color: white;
+    width: 6.5rem;
+    height: 6.5rem;
+    
+    margin: 0.25rem;
+    border-radius: 3rem;
+}
+.profile-dp-image{
+    width: 100%;
+    height: 100%;
+    border-radius: 3rem;
+}
+.profilepage-profile-content-edit{
+    border: 1px solid white;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    font-weight: bold;
+    position: absolute;
+    right: 1rem;
+    top:1rem
+}
+.profilepage-profile-content-name-username{
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    /* background-color: aqua; */
+}
+.profilepage-profile-content-name{
+    font-size: large;
+    font-weight: bold;
+}
+.profilepage-profile-content-bio{
+    display: flex;
+    margin: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.profilepage-profile-content-website{
+    margin: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+.profilepage-profile-content-follow{
+    display: flex;
+    margin: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.profilepage-profile-content-followers{
+    margin-right: 1rem;
+}
+.profilepage-profile-navbar{
+    height: 3rem;
+    border: 1px solid white;
+}
