@@ -18,6 +18,7 @@ export const DataProvider = ({ children }) => {
       });
     }
   };
+
   //   console.log("sduhaiusdfhg");
   const getAllUsers = async () => {
     const userReponse = await getUsers();
@@ -28,9 +29,21 @@ export const DataProvider = ({ children }) => {
       });
     }
   };
+
+  // const getAllBookmarks = async () => {
+  //   const postResponse = await getAllBookmarks();
+  //   if (postResponse.status === 200) {
+  //     dataDispatch({
+  //       type: DATAACTIONS.SETBOOKMARKS,
+  //       payload: postResponse.data.bookmarks,
+  //     });
+  //     console.log(postResponse.data.bookmarks);
+  //   }
+  // };
   useEffect(() => {
     getAllPosts();
     getAllUsers();
+    // getAllBookmarks();
   }, []);
 
   const values = {
