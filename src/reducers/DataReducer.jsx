@@ -4,6 +4,8 @@ export const initialData = {
   posts: [],
   users: [],
   bookmarks: [],
+  sortType: "",
+  loggedInUser: {},
 };
 
 export const DataReducer = (state, action) => {
@@ -24,6 +26,18 @@ export const DataReducer = (state, action) => {
       return {
         ...state,
         bookmarks: action.payload,
+      };
+    }
+    case DATAACTIONS.SETSORTTYPE: {
+      return {
+        ...state,
+        sortType: action.payload,
+      };
+    }
+    case DATAACTIONS.SETLOGGEDINUSER: {
+      return {
+        ...state,
+        loggedInUser: action.payload,
       };
     }
     default: {
