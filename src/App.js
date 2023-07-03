@@ -4,6 +4,7 @@ import './App.css';
 import { Explore } from './pages/Explore/Explore';
 import { Startup } from './pages/Startup/Startup';
 import { Bookmarks } from './pages/Bookmarks/Booksmarks';
+import { Profile } from './pages/Profile/Profile';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/startup" element={<Startup />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/bookmark" element={<Bookmarks />} />
+        <Route path="/profile/:username" element={<Profile />} />
       </Routes>
     </div>
   );
