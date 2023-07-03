@@ -21,6 +21,16 @@ export const getUsers = async () => {
 export const getAllPosts = async () => {
   try {
     const response = await axios.get("/api/posts/user/:username");
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getAllBookmarks = async () => {
+  try {
+    const response = await axios.get("/api/users/bookmark/");
+    return response;
   } catch (error) {
     console.error(error);
   }
