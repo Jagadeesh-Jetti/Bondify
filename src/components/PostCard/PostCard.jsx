@@ -2,11 +2,12 @@ import { useContext } from "react";
 import { DataContext } from "../../contexts/DataContext";
 import "../PostCard/PostCard.css";
 import { likeHandler } from "../../services/APIservices/FunctionalCalls/likeHandler";
-import { isPostLiked } from "../../services/checkers/isPostLiked";
+
 import { dislikeHandler } from "../../services/APIservices/FunctionalCalls/dislikeHandler";
 import { addBookmarkHandler } from "../../services/APIservices/FunctionalCalls/addBookmarkHandler";
 import { isPostBookmarked } from "../../services/checkers/isPostBookmarked";
 import { removeBookmarkHandler } from "../../services/APIservices/FunctionalCalls/removeBookmarkHandler";
+import { deletePostHandler } from "../../services/APIservices/FunctionalCalls/deletePostHandler";
 
 export const PostCard = ({ post }) => {
   const { dataState, dataDispatch } = useContext(DataContext);
@@ -20,10 +21,8 @@ export const PostCard = ({ post }) => {
     createdAt,
     updatedAt,
   } = post;
-  const user = dataState?.users?.find(
-    (user) => user.username.toLowerCase() === username.toLowerCase()
-  );
-  console.log(dataState.bookmarks);
+  const user = dataState?.users?.find((user) => user.username === username);
+
   return (
     <div className="post-card">
       <div className="profile-picture">
@@ -33,6 +32,12 @@ export const PostCard = ({ post }) => {
         <div className="post-header">
           <div className="post-header-name"> {user?.firstName} </div>
           <div className="post-header-username"> @{user?.username} </div>
+          <div className="options">
+            <div>edit</div>{" "}
+            <div onClick={() => deletePostHandler(_id, dataDispatch)}>
+              delete
+            </div>
+          </div>
         </div>
         <div className="post-content"> {content} </div>
         {mediaURL ? (
@@ -43,18 +48,18 @@ export const PostCard = ({ post }) => {
 
         <div className="post-actions">
           <div className="post-actions-comment">
-            comment {comments.length > 0 ? comments.length : null}
+            comment {comments?.length > 0 ? comments?.length : null}
           </div>
           <div
             className="post-actions-like"
             onClick={() =>
-              likes.likedBy.length !== 0
+              likes?.likedBy?.length !== 0
                 ? dislikeHandler(_id, dataDispatch)
                 : likeHandler(_id, dataDispatch)
             }
           >
-            {likes.likedBy.length !== 0 ? "disLike" : "like"}
-            {likes.likeCount > 0 ? likes.likeCount : null}
+            {likes?.likedBy?.length !== 0 ? "disLike" : "like"}
+            {likes?.likeCount > 0 ? likes.likeCount : null}
           </div>
           <div
             className="post-actions-bookmark"

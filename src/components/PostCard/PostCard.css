@@ -2,7 +2,7 @@
     display: flex;
     margin: 0.5rem;
     border-bottom: 1px solid white;
-    
+    position: relative;
     /* justify-content: space-evenly; */
 }
 
@@ -12,6 +12,7 @@
 
 .post-header{
     display: flex;
+    
 }
 
 .post-header-name{
@@ -19,6 +20,12 @@
     margin-right: 0.5rem;
 }
 
+.options{
+    position: absolute;
+    top: 0;
+    right: 0;
+    
+}
 .post-content{
     margin-bottom: 0.5rem;
 }
