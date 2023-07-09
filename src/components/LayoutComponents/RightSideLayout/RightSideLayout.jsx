@@ -24,19 +24,21 @@ export const RightSideLayout = () => {
         </div>
         <div>
           {dataState.users.map((user) => (
-            <div
-              className="rsl-usercard"
-              key={user._id}
-              onClick={() => navigate(`/profile/${user.username}`)}
-            >
-              <div className="rsl-usercard-dp-container">
+            <div className="rsl-usercard" key={user._id}>
+              <div
+                className="rsl-usercard-dp-container"
+                onClick={() => navigate(`/profile/${user.username}`)}
+              >
                 <img
                   src={user.avatarUrl}
                   alt="loading"
                   className="rsl-usercard-dp"
                 />
               </div>
-              <div className="rsl-usercard-name">
+              <div
+                className="rsl-usercard-name"
+                onClick={() => navigate(`/profile/${user.username}`)}
+              >
                 <div>
                   {user.firstName} {user.lastName}
                 </div>
