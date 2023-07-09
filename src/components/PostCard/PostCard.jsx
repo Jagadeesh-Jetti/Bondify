@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { DataContext } from "../../contexts/DataContext";
+import { FaAngleUp, FaAnglesDown } from "react-icons/fa6";
 import "../PostCard/PostCard.css";
 import { likeHandler } from "../../services/APIservices/FunctionalCalls/likeHandler";
 
@@ -25,15 +26,15 @@ export const PostCard = ({ post }) => {
 
   return (
     <div className="post-card">
-      <div className="profile-picture">
-        <img src={user?.avatarUrl} alt="loading" width="35px" height="40px" />
+      <div className="profile-picture-container">
+        <img src={user?.avatarUrl} alt="loading" className="profile-picture" />
       </div>
       <div className="profile-content-card">
         <div className="post-header">
           <div className="post-header-name"> {user?.firstName} </div>
           <div className="post-header-username"> @{user?.username} </div>
           <div className="options">
-            <div>edit</div>{" "}
+            <div>edit</div>
             <div onClick={() => deletePostHandler(_id, dataDispatch)}>
               delete
             </div>
@@ -58,7 +59,7 @@ export const PostCard = ({ post }) => {
                 : likeHandler(_id, dataDispatch)
             }
           >
-            {likes?.likedBy?.length !== 0 ? "disLike" : "like"}
+            {likes?.likedBy?.length !== 0 ? <FaAnglesDown /> : <FaAngleUp />}
             {likes?.likeCount > 0 ? likes.likeCount : null}
           </div>
           <div
