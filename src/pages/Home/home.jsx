@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "../Home/home.css";
 import { LeftNavLayout } from "../../components/LayoutComponents/LeftNavLayout/LeftNavLayout";
 import { RightSideLayout } from "../../components/LayoutComponents/RightSideLayout/RightSideLayout";
@@ -10,19 +10,36 @@ import { Filtering } from "../../services/filtering";
 import { createPostService } from "../../services/APIservices/FunctionalCalls/createPostHandler";
 
 export const Home = () => {
-  const { dataState, dataDispatch } = useContext(DataContext);
+  const { dataState, dataDispatch, newPost, setNewPost } =
+    useContext(DataContext);
   const updatedPosts = Filtering(dataState);
 
-  const [postContent, setPostContent] = useState("");
+  // const [newPost, setNewPost] = useState({
+  //   content: "",
+  //   postImage: "",
+  // });
 
-  const handlePostContentChange = (e) => {
-    setPostContent(e.target.value);
+  const handleInput = (e) => {
+    setNewPost((newPost) => ({
+      ...newPost,
+      content: e.target.value,
+    }));
+  };
+
+  const handleImg = (e) => {
+    const files = e.target.files[0];
+    setNewPost((newPost) => ({
+      ...newPost,
+      postImage: URL.createObjectURL(files),
+    }));
   };
 
   const handleCreatePost = () => {
-    createPostService(postContent, dataDispatch);
-    setPostContent("");
+    createPostService(newPost, dataDispatch, setNewPost);
   };
+
+  const isDisabled =
+    newPost.content?.trim().length === 0 && newPost.postImage === "";
 
   return (
     <div className="home-main-container">
@@ -41,27 +58,49 @@ export const Home = () => {
               className="hml-dp"
             />
           </div>
-          <div className="hml-create-post-input">
-            <textarea
-              value={postContent}
-              onChange={handlePostContentChange}
-              placeholder="What's happening?"
-              maxLength={280}
-              className="hml-create-post-textarea"
-            />
-            <div className="hml-create-post-footer">
-              <div className="hml-create-post-counter">
-                {280 - postContent.length}
-              </div>
-              <button
-                className={`hml-create-post-button ${
-                  postContent.length === 0 ? "disabled" : ""
-                }`}
-                onClick={handleCreatePost}
-                disabled={postContent.length === 0}
+
+          <div className="add-post-div">
+            <div>
+              <textarea
+                className="add-post-input"
+                placeholder="what's happning?"
+                type="text"
+                name="content"
+                value={newPost?.content}
+                onChange={handleInput}
               >
-                Tweet
-              </button>
+                {" "}
+              </textarea>
+            </div>
+            <>
+              {newPost?.postImage && (
+                <>
+                  <img
+                    className="add-post-img"
+                    src={newPost?.postImage}
+                    alt="new post"
+                  />
+                </>
+              )}
+            </>
+            <div className="post-input-div">
+              <input
+                id="file"
+                type="file"
+                onChange={handleImg}
+                accept="image/*"
+              />
+              <label htmlFor="file">
+                <i className="fa-regular fa-image fa-lg"></i>
+              </label>{" "}
+              <button
+                disabled={isDisabled}
+                className="add-post-btn"
+                title={isDisabled ? "Add content" : "Post content"}
+                onClick={handleCreatePost}
+              >
+                Post
+              </button>{" "}
             </div>
           </div>
         </div>

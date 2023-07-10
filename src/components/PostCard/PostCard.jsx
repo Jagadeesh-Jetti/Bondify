@@ -1,9 +1,8 @@
 import { useContext } from "react";
 import { DataContext } from "../../contexts/DataContext";
-import { FaAngleUp, FaAnglesDown } from "react-icons/fa6";
+import { FaAngleUp, FaAngleDown } from "react-icons/fa";
 import "../PostCard/PostCard.css";
 import { likeHandler } from "../../services/APIservices/FunctionalCalls/likeHandler";
-
 import { dislikeHandler } from "../../services/APIservices/FunctionalCalls/dislikeHandler";
 import { addBookmarkHandler } from "../../services/APIservices/FunctionalCalls/addBookmarkHandler";
 import { isPostBookmarked } from "../../services/checkers/isPostBookmarked";
@@ -11,7 +10,7 @@ import { removeBookmarkHandler } from "../../services/APIservices/FunctionalCall
 import { deletePostHandler } from "../../services/APIservices/FunctionalCalls/deletePostHandler";
 
 export const PostCard = ({ post }) => {
-  const { dataState, dataDispatch } = useContext(DataContext);
+  const { dataState, dataDispatch, setEditModal } = useContext(DataContext);
   const {
     _id,
     content,
@@ -22,7 +21,14 @@ export const PostCard = ({ post }) => {
     createdAt,
     updatedAt,
   } = post;
-  const user = dataState?.users?.find((user) => user.username === username);
+
+  const clickedUser = dataState.users.find(
+    (user) => user.username.toLowerCase() === username.toLowerCase()
+  );
+
+  const loggedInUser = dataState.loggedInUser;
+
+  const user = clickedUser || loggedInUser;
 
   return (
     <div className="post-card">
@@ -31,21 +37,32 @@ export const PostCard = ({ post }) => {
       </div>
       <div className="profile-content-card">
         <div className="post-header">
-          <div className="post-header-name"> {user?.firstName} </div>
-          <div className="post-header-username"> @{user?.username} </div>
-          <div className="options">
-            <div>edit</div>
-            <div onClick={() => deletePostHandler(_id, dataDispatch)}>
-              delete
+          <div className="post-header-name">{user?.firstName}</div>
+          <div className="post-header-username">@{user?.username}</div>
+          {user?.username === loggedInUser?.username && (
+            <div className="options">
+              <div
+                onClick={() =>
+                  setEditModal({
+                    modalState: true,
+                    postId: _id,
+                  })
+                }
+              >
+                edit
+              </div>
+              <div onClick={() => deletePostHandler(_id, dataDispatch)}>
+                delete
+              </div>
             </div>
-          </div>
+          )}
         </div>
-        <div className="post-content"> {content} </div>
-        {mediaURL ? (
+        <div className="post-content">{content}</div>
+        {mediaURL && (
           <div className="post-image">
             <img src={mediaURL} alt="loading" />
           </div>
-        ) : null}
+        )}
 
         <div className="post-actions">
           <div className="post-actions-comment">
@@ -59,7 +76,7 @@ export const PostCard = ({ post }) => {
                 : likeHandler(_id, dataDispatch)
             }
           >
-            {likes?.likedBy?.length !== 0 ? <FaAnglesDown /> : <FaAngleUp />}
+            {likes?.likedBy?.length !== 0 ? <FaAngleDown /> : <FaAngleUp />}
             {likes?.likeCount > 0 ? likes.likeCount : null}
           </div>
           <div
@@ -74,7 +91,7 @@ export const PostCard = ({ post }) => {
               ? "already bookmarked"
               : "bookmark"}
           </div>
-          <div className="post-actions-share"> share </div>
+          {/* <div className="post-actions-share">share</div> */}
         </div>
       </div>
     </div>

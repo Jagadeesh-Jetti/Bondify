@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useReducer } from "react";
+import React, { createContext, useEffect, useReducer, useState } from "react";
 import { DataReducer, initialData } from "../reducers/DataReducer";
 // import { getPosts, getUsers } from "../services/fetchAPI";
 import { DATAACTIONS } from "../services/actions";
@@ -8,6 +8,19 @@ export const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
   const [dataState, dataDispatch] = useReducer(DataReducer, initialData);
+  const [user, setUser] = useState(dataState.loggedInUser);
+  const [avatar, setAvatar] = useState(false);
+  const [newPost, setNewPost] = useState({
+    content: "",
+    postImage: "",
+  });
+
+  const [editModal, setEditModal] = useState({
+    modalState: false,
+    postId: "",
+  });
+
+  const [editUserModal, setEditUserModal] = useState(false);
 
   const getAllPosts = async () => {
     const postResponse = await getPosts();
@@ -49,6 +62,16 @@ export const DataProvider = ({ children }) => {
   const values = {
     dataState,
     dataDispatch,
+    newPost,
+    setNewPost,
+    editUserModal,
+    setEditUserModal,
+    editModal,
+    setEditModal,
+    user,
+    setUser,
+    avatar,
+    setAvatar,
   };
 
   return <DataContext.Provider value={values}>{children}</DataContext.Provider>;

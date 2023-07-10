@@ -6,6 +6,8 @@ import {
 import { useNavigate } from "react-router-dom";
 import { DATAACTIONS } from "../services/actions";
 import { DataContext } from "./DataContext";
+import { AvatarOptions } from "../services/avatarStore";
+// import { Login } from "../components/Modals/Login/Login";
 
 export const AuthContext = createContext();
 
@@ -28,7 +30,7 @@ export const AuthProvider = ({ children }) => {
           payload: response.data.foundUser,
         });
         // console.log(response.data.encodedToken);
-        navigate("/");
+        navigate("/home");
       }
     } catch (error) {
       console.error(error);
@@ -37,9 +39,26 @@ export const AuthProvider = ({ children }) => {
 
   const signupHandler = async (signupDetails) => {
     try {
-      const response = await signupCall(signupDetails);
+      const { name, username, email, password, confirmPassword } =
+        signupDetails;
+      const response = await signupCall({
+        name,
+        username,
+        email,
+        password,
+        confirmPassword,
+        avatarUrl:
+          AvatarOptions[Math.floor(Math.random() * AvatarOptions?.length)],
+      });
       if (response.status === 201) {
         localStorage.setItem("token", response.data.encodedToken);
+
+        dataDispatch({
+          type: DATAACTIONS.SETLOGGEDINUSER,
+          payload: response.data.foundUser,
+        });
+        console.log("signup successful");
+        navigate("/login");
       }
     } catch (error) {
       console.error(error);

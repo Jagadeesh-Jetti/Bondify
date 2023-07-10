@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { Login } from "../../components/Modals/Login/Login";
 import { SignUp } from "../../components/Modals/SignUp/SignUp";
 import "../Startup/Startup.css";
 
 export const Startup = () => {
+  const navigate = useNavigate();
   return (
     <div className="startup-container">
       <div className="startup-image-container">
@@ -17,8 +19,8 @@ export const Startup = () => {
           <div>
             <SignUp />
           </div>
-          <div>
-            <Login />
+          <div className="login" onClick={() => navigate("/login")}>
+            Login
           </div>
           {/* <div className="login">Login</div> */}
           {/* <div className="login-as-guest">Guest Login </div> */}

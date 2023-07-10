@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/reactjs-popup.esm.js";
 import "../SignUp/SignUp.css";
 import { Login } from "../Login/Login";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 export const SignUp = () => {
+  const { signupHandler } = useContext(AuthContext);
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -23,7 +26,7 @@ export const SignUp = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Add your sign-up logic here
+    signupHandler(formData);
     console.log(formData);
   };
 

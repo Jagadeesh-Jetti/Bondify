@@ -4,4 +4,5 @@ export const DATAACTIONS = {
   SETBOOKMARKS: "setBookmarks",
   SETSORTTYPE: "setSortType",
   SETLOGGEDINUSER: "setLoggedInUser",
+  SETAVATAR: "setAvatar",
 };

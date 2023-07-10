@@ -13,6 +13,9 @@ export const RightSideLayout = () => {
     return dataState.loggedInUser?.following?.some(({ _id }) => _id === userId);
   };
 
+  const usersToShow = dataState.users.filter(
+    (user) => user.username !== dataState.loggedInUser.username
+  );
   return (
     <div className="home-right-container">
       <div className="rsl-search-container">
@@ -23,7 +26,7 @@ export const RightSideLayout = () => {
           <h2> Who to follow </h2>
         </div>
         <div>
-          {dataState.users.map((user) => (
+          {usersToShow.map((user) => (
             <div className="rsl-usercard" key={user._id}>
               <div
                 className="rsl-usercard-dp-container"

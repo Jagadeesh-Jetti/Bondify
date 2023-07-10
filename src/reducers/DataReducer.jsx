@@ -40,6 +40,12 @@ export const DataReducer = (state, action) => {
         loggedInUser: action.payload,
       };
     }
+    case DATAACTIONS.SETAVATAR: {
+      return {
+        ...state,
+        loggedInUser: { ...state.loggedInUser, avatarUrl: action.payload },
+      };
+    }
     default: {
       return state;
     }
