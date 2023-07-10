@@ -5,8 +5,9 @@ import { RightSideLayout } from "../../components/LayoutComponents/RightSideLayo
 import { PostsLayout } from "../../components/LayoutComponents/PostsLayout/PostsLayout";
 import { useContext } from "react";
 import { DataContext } from "../../contexts/DataContext";
-import { DATAACTIONS } from "../../services/actions";
+// import { DATAACTIONS } from "../../services/actions";
 import { Filtering } from "../../services/filtering";
+import { createPostService } from "../../services/APIservices/FunctionalCalls/createPostHandler";
 
 export const Home = () => {
   const { dataState, dataDispatch } = useContext(DataContext);
@@ -19,19 +20,7 @@ export const Home = () => {
   };
 
   const handleCreatePost = () => {
-    // Handle logic to create a post with the postContent
-    // You can make an API call or dispatch an action to update the state
-
-    // Example using dataDispatch:
-    dataDispatch({
-      type: DATAACTIONS.CREATE_POST,
-      payload: {
-        content: postContent,
-        // Additional properties for the new post
-      },
-    });
-
-    // Reset the postContent state after creating the post
+    createPostService(postContent, dataDispatch);
     setPostContent("");
   };
 
