@@ -14,11 +14,6 @@ export const Home = () => {
     useContext(DataContext);
   const updatedPosts = Filtering(dataState);
 
-  // const [newPost, setNewPost] = useState({
-  //   content: "",
-  //   postImage: "",
-  // });
-
   const handleInput = (e) => {
     setNewPost((newPost) => ({
       ...newPost,
@@ -63,7 +58,7 @@ export const Home = () => {
             <div>
               <textarea
                 className="add-post-input"
-                placeholder="what's happning?"
+                placeholder="what's happening?"
                 type="text"
                 name="content"
                 value={newPost?.content}

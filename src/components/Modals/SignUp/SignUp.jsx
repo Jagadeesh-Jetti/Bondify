@@ -4,8 +4,10 @@ import "reactjs-popup/dist/reactjs-popup.esm.js";
 import "../SignUp/SignUp.css";
 import { Login } from "../Login/Login";
 import { AuthContext } from "../../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export const SignUp = () => {
+  const navigate = useNavigate();
   const { signupHandler } = useContext(AuthContext);
 
   const [formData, setFormData] = useState({
@@ -92,9 +94,8 @@ export const SignUp = () => {
                 />
               </div>
               <button type="submit">Sign Up</button>
-              <div>
+              <div onClick={() => navigate("/login")}>
                 Already have an account? <h4>Login</h4>
-                <Login />
               </div>
             </form>
           </div>

@@ -15,6 +15,7 @@ export const LeftNavLayout = () => {
         <h3 onClick={() => navigate("/home")}> Home </h3>
         <h3 onClick={() => navigate("/explore")}> Explore </h3>
         <h3 onClick={() => navigate("/bookmark")}> Bookmarks </h3>
+
         <h3
           onClick={() =>
             navigate(`/profile/${dataState.loggedInUser.username}`)
@@ -22,6 +23,7 @@ export const LeftNavLayout = () => {
         >
           Profile
         </h3>
+        <h3>Logout</h3>
       </div>
       <div
         className="lsr-userProfile"
