@@ -10,7 +10,10 @@ export const Explore = () => {
   return (
     <div className="explore-container">
       <LeftNavLayout />
-      <PostsLayout data={dataState?.posts} />
+      <div className="explore-middle-container">
+        <PostsLayout data={dataState?.posts} />
+      </div>
+
       <RightSideLayout />
     </div>
   );

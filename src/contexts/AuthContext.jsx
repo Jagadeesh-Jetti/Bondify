@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { DATAACTIONS } from "../services/actions";
 import { DataContext } from "./DataContext";
 import { AvatarOptions } from "../services/avatarStore";
-// import { Login } from "../components/Modals/Login/Login";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const AuthContext = createContext();
 
@@ -29,7 +30,6 @@ export const AuthProvider = ({ children }) => {
           type: DATAACTIONS.SETLOGGEDINUSER,
           payload: response.data.foundUser,
         });
-        // console.log(response.data.encodedToken);
         navigate("/home");
       }
     } catch (error) {
@@ -50,6 +50,7 @@ export const AuthProvider = ({ children }) => {
         avatarUrl:
           AvatarOptions[Math.floor(Math.random() * AvatarOptions?.length)],
       });
+
       if (response.status === 201) {
         localStorage.setItem("token", response.data.encodedToken);
 
@@ -57,8 +58,12 @@ export const AuthProvider = ({ children }) => {
           type: DATAACTIONS.SETLOGGEDINUSER,
           payload: response.data.foundUser,
         });
-        console.log("signup successful");
-        navigate("/login");
+
+        toast.success("Signup successful!, Please login now.", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+          autoClose: 5000,
+        });
+        navigate("/home");
       }
     } catch (error) {
       console.error(error);

@@ -55,7 +55,7 @@ export const RightSideLayout = () => {
                     : followHandler(user._id, dataDispatch);
                 }}
               >
-                {isFollowed(user._id) ? "unfollowed" : "follow"}
+                {isFollowed(user._id) ? "Unfollow" : "Follow"}
               </div>
             </div>
           ))}

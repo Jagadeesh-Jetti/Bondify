@@ -5,4 +5,10 @@
     height: 100%;
     color: white;
     background-color: 	#141d26;
+
+}
+
+.explore-middle-container{
+    border-left: 1px solid rgb(195, 186, 186);
+    border-right: 1px solid rgb(195, 186, 186); 
 }

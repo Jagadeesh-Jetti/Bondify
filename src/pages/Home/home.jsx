@@ -5,9 +5,9 @@ import { RightSideLayout } from "../../components/LayoutComponents/RightSideLayo
 import { PostsLayout } from "../../components/LayoutComponents/PostsLayout/PostsLayout";
 import { useContext } from "react";
 import { DataContext } from "../../contexts/DataContext";
-// import { DATAACTIONS } from "../../services/actions";
 import { Filtering } from "../../services/filtering";
 import { createPostService } from "../../services/APIservices/FunctionalCalls/createPostHandler";
+import { DATAACTIONS } from "../../services/actions";
 
 export const Home = () => {
   const { dataState, dataDispatch, newPost, setNewPost } =
@@ -21,20 +21,14 @@ export const Home = () => {
     }));
   };
 
-  const handleImg = (e) => {
-    const files = e.target.files[0];
-    setNewPost((newPost) => ({
-      ...newPost,
-      postImage: URL.createObjectURL(files),
-    }));
-  };
-
   const handleCreatePost = () => {
     createPostService(newPost, dataDispatch, setNewPost);
+    setNewPost({
+      content: "",
+    });
   };
 
-  const isDisabled =
-    newPost.content?.trim().length === 0 && newPost.postImage === "";
+  const isDisabled = !newPost.content || newPost.content.trim().length === 0;
 
   return (
     <div className="home-main-container">
@@ -43,8 +37,32 @@ export const Home = () => {
       <div className="home-middle-container">
         <div className="home-middle-header">
           <div className="home-middle-header-title">Home</div>
+          <div className="home-middle-header-filters">
+            <div
+              className="hmh-filters-trending"
+              onClick={() =>
+                dataDispatch({
+                  type: DATAACTIONS.SETSORTTYPE,
+                  payload: "latest",
+                })
+              }
+            >
+              Latest
+            </div>
+            <div
+              className="hmh-filters-oldest"
+              onClick={() =>
+                dataDispatch({
+                  type: DATAACTIONS.SETSORTTYPE,
+                  payload: "trending",
+                })
+              }
+            >
+              Trending
+            </div>
+          </div>
         </div>
-        <div className="home-middle-header-filters">{/* Filters code */}</div>
+
         <div className="hml-create-post">
           <div className="hml-dp-container">
             <img
@@ -63,31 +81,9 @@ export const Home = () => {
                 name="content"
                 value={newPost?.content}
                 onChange={handleInput}
-              >
-                {" "}
-              </textarea>
+              ></textarea>
             </div>
-            <>
-              {newPost?.postImage && (
-                <>
-                  <img
-                    className="add-post-img"
-                    src={newPost?.postImage}
-                    alt="new post"
-                  />
-                </>
-              )}
-            </>
             <div className="post-input-div">
-              <input
-                id="file"
-                type="file"
-                onChange={handleImg}
-                accept="image/*"
-              />
-              <label htmlFor="file">
-                <i className="fa-regular fa-image fa-lg"></i>
-              </label>{" "}
               <button
                 disabled={isDisabled}
                 className="add-post-btn"
@@ -95,11 +91,13 @@ export const Home = () => {
                 onClick={handleCreatePost}
               >
                 Post
-              </button>{" "}
+              </button>
             </div>
           </div>
         </div>
-        <PostsLayout data={updatedPosts} />
+        <div>
+          <PostsLayout data={updatedPosts} />
+        </div>
       </div>
       <RightSideLayout />
     </div>

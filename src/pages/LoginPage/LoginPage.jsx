@@ -1,17 +1,13 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { useState, useContext } from "react";
 
 import "../LoginPage/LoginPage.css";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
-// import { DataContext } from "../../contexts/DataContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import { SignUp } from "../../components/Modals/SignUp/SignUp";
 
 export const SignIn = () => {
   const { loginHandler } = useContext(AuthContext);
-  const navigate = useNavigate();
 
   const [signinDetails, setSignInDetails] = useState({
     username: "",
@@ -40,18 +36,12 @@ export const SignIn = () => {
 
   return (
     <div className="signin-parent-div">
-      {" "}
       <NavLink className="signin-page-link" to="/">
-        {" "}
-        <h1 style={{ marginTop: "0" }}> Bondify </h1>{" "}
+        <h1 style={{ marginTop: "0" }}> Bondify </h1>
       </NavLink>
       <div className="signin-container">
         <div>
-          <h2>
-            {" "}
-            {/* <FontAwesomeIcon icon={faRightToBracket} /> */}
-            Sign In
-          </h2>
+          <h2>Sign In</h2>
 
           <div className="input-div">
             <p>Username</p>
@@ -59,7 +49,7 @@ export const SignIn = () => {
               onChange={(e) =>
                 setSignInDetails({ ...signinDetails, username: e.target.value })
               }
-              placeholder="tonystark"
+              placeholder="naruto"
               className="signin-input"
               type="text"
             />
@@ -83,12 +73,9 @@ export const SignIn = () => {
             <button onClick={handleLogIn} className="signin-btn">
               SIGN IN
             </button>
-            {/* <NavLink className="signin-page-link" to="/signup">
-              <p> Create New Account </p>
-            </NavLink> */}
-            <div>
-              <SignUp />
-            </div>
+
+            <SignUp />
+
             <p className="guest" onClick={handleGuest}>
               Sign In as Guest
             </p>

@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { DataContext } from "../../contexts/DataContext";
-import { FaAngleUp, FaAngleDown } from "react-icons/fa";
 import "../PostCard/PostCard.css";
 import { likeHandler } from "../../services/APIservices/FunctionalCalls/likeHandler";
 import { dislikeHandler } from "../../services/APIservices/FunctionalCalls/dislikeHandler";
@@ -8,6 +7,13 @@ import { addBookmarkHandler } from "../../services/APIservices/FunctionalCalls/a
 import { isPostBookmarked } from "../../services/checkers/isPostBookmarked";
 import { removeBookmarkHandler } from "../../services/APIservices/FunctionalCalls/removeBookmarkHandler";
 import { deletePostHandler } from "../../services/APIservices/FunctionalCalls/deletePostHandler";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHeart,
+  faComment,
+  faBookmark,
+  faAngleUp,
+} from "@fortawesome/free-solid-svg-icons";
 
 export const PostCard = ({ post }) => {
   const { dataState, dataDispatch, setEditModal } = useContext(DataContext);
@@ -49,10 +55,10 @@ export const PostCard = ({ post }) => {
                   })
                 }
               >
-                edit
+                Edit
               </div>
               <div onClick={() => deletePostHandler(_id, dataDispatch)}>
-                delete
+                Delete
               </div>
             </div>
           )}
@@ -66,7 +72,8 @@ export const PostCard = ({ post }) => {
 
         <div className="post-actions">
           <div className="post-actions-comment">
-            comment {comments?.length > 0 ? comments?.length : null}
+            <FontAwesomeIcon icon={faComment} />{" "}
+            {comments?.length > 0 ? comments?.length : null}
           </div>
           <div
             className="post-actions-like"
@@ -76,9 +83,14 @@ export const PostCard = ({ post }) => {
                 : likeHandler(_id, dataDispatch)
             }
           >
-            {likes?.likedBy?.length !== 0 ? <FaAngleDown /> : <FaAngleUp />}
+            {likes?.likedBy?.length !== 0 ? (
+              <FontAwesomeIcon icon={faHeart} />
+            ) : (
+              <FontAwesomeIcon icon={faAngleUp} />
+            )}
             {likes?.likeCount > 0 ? likes.likeCount : null}
           </div>
+
           <div
             className="post-actions-bookmark"
             onClick={() => {
@@ -87,11 +99,12 @@ export const PostCard = ({ post }) => {
                 : addBookmarkHandler(_id, dataDispatch);
             }}
           >
-            {isPostBookmarked(_id, dataState)
-              ? "already bookmarked"
-              : "bookmark"}
+            {isPostBookmarked(_id, dataState) ? (
+              <FontAwesomeIcon icon={faBookmark} />
+            ) : (
+              "bookmark"
+            )}
           </div>
-          {/* <div className="post-actions-share">share</div> */}
         </div>
       </div>
     </div>

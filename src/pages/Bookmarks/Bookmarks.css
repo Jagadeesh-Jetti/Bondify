@@ -6,3 +6,27 @@
     color: white;
     background-color: 	#141d26;
 }
+
+.bookmarks-middle-container{
+    border-left: 1px solid rgb(195, 186, 186);
+    border-right: 1px solid rgb(195, 186, 186); 
+    min-width: 38rem;
+}
+
+.bmc-header{
+    padding-top: 0.3rem;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    background-color: #141d26;
+    border-bottom: 1px solid rgb(195, 186, 186);
+    color: white;
+}
+
+.bmc-header-title{
+    font-size: large;
+    font-weight: bold;
+}
+
+.bmc-header-subtitle{
+    filter: brightness(0.7); 
+}

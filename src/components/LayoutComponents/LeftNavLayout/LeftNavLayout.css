@@ -16,6 +16,15 @@
     margin-bottom: 80%;
 }
 
+.ind-div{
+    font-size: large;
+    margin-top: 1rem;
+}
+
+.ind-div:hover{
+   
+}
+
 .lsr-userProfile{
     margin-left: 40%;
     display: flex;

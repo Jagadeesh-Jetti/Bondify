@@ -30,15 +30,27 @@ export const SignUp = () => {
     event.preventDefault();
     signupHandler(formData);
     console.log(formData);
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      username: "",
+      password: "",
+    });
   };
 
   return (
     <div>
-      <Popup trigger={<div className="signup"> Sign up </div>} modal nested>
+      <Popup
+        trigger={<div className="signin-btn-modal"> Sign up </div>}
+        modal
+        nested
+      >
         {(close) => (
           <div className="modal">
             <form className="signup-form" onSubmit={handleSubmit}>
               <div>
+                <h1> Create New Account</h1>
                 <label htmlFor="firstName">First Name</label>
                 <input
                   type="text"
@@ -94,7 +106,12 @@ export const SignUp = () => {
                 />
               </div>
               <button type="submit">Sign Up</button>
-              <div onClick={() => navigate("/login")}>
+              <div
+                onClick={() => {
+                  close();
+                  navigate("/login");
+                }}
+              >
                 Already have an account? <h4>Login</h4>
               </div>
             </form>

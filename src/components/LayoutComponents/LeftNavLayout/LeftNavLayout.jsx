@@ -1,29 +1,44 @@
 import { useNavigate } from "react-router-dom";
-import "../LeftNavLayout/LeftNavLayout.css";
 import { useContext } from "react";
 import { DataContext } from "../../../contexts/DataContext";
+import "../LeftNavLayout/LeftNavLayout.css";
 
 export const LeftNavLayout = () => {
   const navigate = useNavigate();
   const { dataState } = useContext(DataContext);
-  // console.log(loggedInUser);
+
   return (
     <div className="home-side-nav">
       <div className="home-side-nav-content">
         <h3> Bondify </h3>
-        {/* <h3 onClick={() => navigate("/startup")}> Startup </h3> */}
-        <h3 onClick={() => navigate("/home")}> Home </h3>
-        <h3 onClick={() => navigate("/explore")}> Explore </h3>
-        <h3 onClick={() => navigate("/bookmark")}> Bookmarks </h3>
+        <div className="ind-div" onClick={() => navigate("/home")}>
+          <i className="fas fa-home sidebar-icon"></i>
+          Home
+        </div>
 
-        <h3
+        <div className="ind-div" onClick={() => navigate("/explore")}>
+          <i className="fas fa-search sidebar-icon"></i>
+          Explore
+        </div>
+
+        <div className="ind-div" onClick={() => navigate("/bookmark")}>
+          <i className="far fa-bookmark sidebar-icon"></i>
+          Bookmarks{" "}
+        </div>
+
+        <div
+          className="ind-div"
           onClick={() =>
             navigate(`/profile/${dataState.loggedInUser.username}`)
           }
         >
+          <i className="far fa-user sidebar-icon"></i>
           Profile
+        </div>
+        <h3 className="ind-div" onClick={() => navigate("/login")}>
+          <i className="fas fa-sign-out-alt sidebar-icon"></i>
+          Logout
         </h3>
-        <h3>Logout</h3>
       </div>
       <div
         className="lsr-userProfile"

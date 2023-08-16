@@ -35,7 +35,7 @@ export const Profile = () => {
         </div>
         <div className="profilepage-content-body">
           <div className="profilepage-profile">
-            <div className="profilepage-profile-banner"> upper half banner</div>
+            <div className="profilepage-profile-banner"> </div>
             <div className="profilepage-profile-content">
               <div className="profilepage-profile-content-dp-edit">
                 <div className="profilepage-profile-content-dp-parent-container">
@@ -73,10 +73,12 @@ export const Profile = () => {
               </div>
               <div className="profilepage-profile-content-follow">
                 <div className="profilepage-profile-content-followers">
-                  {clickedUser()?.followers.length || 0} followers
+                  <div>{clickedUser()?.followers.length || 0}</div>
+                  <div className="follow-word">followers</div>
                 </div>
                 <div className="profilepage-profile-content-following">
-                  {clickedUser()?.following.length || 0} following
+                  <div>{clickedUser()?.following.length || 0} </div>
+                  <div className="follow-word"> following</div>
                 </div>
               </div>
             </div>
@@ -95,7 +97,7 @@ export const Profile = () => {
               </div>
             </div>
           )}
-          <div className="profilepage-profile-navbar"> nav bar </div>
+          {/* <div className="profilepage-profile-navbar"> </div> */}
           <div className="profilepage-profile-tweets">
             <PostsLayout data={clickedUserPosts} />
           </div>

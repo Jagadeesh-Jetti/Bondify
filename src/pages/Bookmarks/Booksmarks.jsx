@@ -4,7 +4,6 @@ import { LeftNavLayout } from "../../components/LayoutComponents/LeftNavLayout/L
 import { RightSideLayout } from "../../components/LayoutComponents/RightSideLayout/RightSideLayout";
 import { DataContext } from "../../contexts/DataContext";
 import { PostsLayout } from "../../components/LayoutComponents/PostsLayout/PostsLayout";
-// import { PostCard } from "../../components/PostCard/PostCard";
 
 export const Bookmarks = () => {
   const { dataState } = useContext(DataContext);
@@ -13,12 +12,20 @@ export const Bookmarks = () => {
     dataState.posts.find((post) => post?._id === bookmark?._id)
   );
 
-  console.log(bookmarkedPosts);
-
   return (
     <div className="bookmarks-container">
       <LeftNavLayout />
-      <PostsLayout data={bookmarkedPosts} />
+      <div className="bookmarks-middle-container">
+        <div className="bmc-header">
+          <div className="bmc-header-title">Bookmarks</div>
+          <div className="bmc-header-subtitle">
+            @{dataState.loggedInUser.username}
+          </div>
+        </div>
+        <div>
+          <PostsLayout data={bookmarkedPosts} />
+        </div>
+      </div>
       <RightSideLayout />
     </div>
   );

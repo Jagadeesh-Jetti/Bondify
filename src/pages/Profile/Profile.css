@@ -8,7 +8,8 @@
 }
 .profile-middle-container{
     width: 80%;
-    border: 1px solid white;
+    border-left: 1px solid rgb(195, 186, 186); 
+    border-right: 1px solid rgb(195, 186, 186); 
 }
 .profilepage-header-name-container{
     height: 3rem;
@@ -21,19 +22,26 @@
 
 .profilepage-profile-banner{
     height: 13rem;
-    background-color: rgb(160, 162, 170);
-    border: 1px solid white;
+    background-color: 	#141d26;
+    border: 1px solid  1px solid rgb(195, 186, 186); 
 }
+
+.profilepage-profile{
+    border-bottom:1px solid rgb(195, 186, 186);  ;
+}
+
 .profilepage-profile-content{
     /* background-color: beige; */
-    border: 1px solid white;
+    border: 1px solid  1px solid rgb(195, 186, 186); 
     height: 14rem;
 }
+
 .profilepage-profile-content-dp-edit{
     display: flex;
     position: relative;
     margin-bottom: 0.5rem;
 }
+
 .profilepage-profile-content-dp-parent-container{
     background-color: 	#141d26;
     width: 7rem;
@@ -42,40 +50,54 @@
     margin-top: -3.5rem;
     border-radius: 3.5rem;
 }
+
 .profilepage-profile-content-dp-container{
     background-color: white;
     width: 6.5rem;
     height: 6.5rem;
-    
     margin: 0.25rem;
     border-radius: 3rem;
 }
+
 .profile-dp-image{
     width: 100%;
     height: 100%;
     border-radius: 3rem;
 }
+
 .profilepage-profile-content-edit{
-    border: 1px solid white;
+    border: 1px solid rgb(195, 186, 186); 
     padding: 0.5rem;
     border-radius: 1rem;
     font-weight: bold;
     position: absolute;
     right: 1rem;
-    top:1rem
+    top:1rem;
+    transition: background-color 0.3s, cursor 0.3s;
 }
+
+.profilepage-profile-content-edit :hover{
+    background-color: lightgray;
+    cursor: pointer;
+}
+
 .profilepage-profile-content-name-username{
     display: flex;
     flex-direction: column;
     margin: 1rem;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
-    /* background-color: aqua; */
 }
+
 .profilepage-profile-content-name{
     font-size: large;
     font-weight: bold;
 }
+
+.profilepage-profile-content-username{
+    filter: brightness(0.7); 
+}
+
 .profilepage-profile-content-bio{
     display: flex;
     margin: 1rem;
@@ -95,9 +117,18 @@
     margin-bottom: 0.5rem;
 }
 .profilepage-profile-content-followers{
+    display: flex;
     margin-right: 1rem;
+}
+.profilepage-profile-content-following{
+    display: flex;
+}
+
+.follow-word{
+    margin-left: 0.4rem;
+    filter: brightness(0.7); 
 }
 .profilepage-profile-navbar{
     height: 3rem;
-    border: 1px solid white;
+    border: 1px solid  1px solid rgb(195, 186, 186); 
 }
