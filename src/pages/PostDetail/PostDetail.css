@@ -1,0 +1,30 @@
+.post-detail-main{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    color: white;
+    background-color: #141d26;
+}
+
+.post-detail-middle-container{
+    flex: 1;
+    border-left: 1px solid rgb(195, 186, 186);;
+    border-right: 1px solid rgb(195, 186, 186); ;
+    min-width: 38rem;
+}
+
+.post-detail-nav{
+    display: flex;
+    padding: 0.8rem;
+}
+
+.left-arrow-icon{
+    /* padding-left: 1rem; */
+    padding-right: 1rem;
+}
+
+.post-detail-post-title{
+    font-size: larger;
+    font-weight: bold;
+    padding-left: 1rem;
+}
