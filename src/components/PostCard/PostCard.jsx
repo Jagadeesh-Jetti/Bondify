@@ -8,14 +8,12 @@ import { isPostBookmarked } from "../../services/checkers/isPostBookmarked";
 import { removeBookmarkHandler } from "../../services/APIservices/FunctionalCalls/removeBookmarkHandler";
 import { deletePostHandler } from "../../services/APIservices/FunctionalCalls/deletePostHandler";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHeart,
-  faComment,
-  faBookmark,
-  faAngleUp,
-} from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faBookmark } from "@fortawesome/free-solid-svg-icons";
+import { FaRegHeart, FaRegBookmark, FaRegComment } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 export const PostCard = ({ post }) => {
+  const navigate = useNavigate();
   const { dataState, dataDispatch, setEditModal } = useContext(DataContext);
   const {
     _id,
@@ -37,7 +35,10 @@ export const PostCard = ({ post }) => {
   const user = clickedUser || loggedInUser;
 
   return (
-    <div className="post-card">
+    <div
+      className="post-card"
+      onClick={() => navigate(`/users/${user._id}/posts/${_id}`)}
+    >
       <div className="profile-picture-container">
         <img src={user?.avatarUrl} alt="loading" className="profile-picture" />
       </div>
@@ -72,7 +73,7 @@ export const PostCard = ({ post }) => {
 
         <div className="post-actions">
           <div className="post-actions-comment">
-            <FontAwesomeIcon icon={faComment} />{" "}
+            <FaRegComment />
             {comments?.length > 0 ? comments?.length : null}
           </div>
           <div
@@ -86,7 +87,7 @@ export const PostCard = ({ post }) => {
             {likes?.likedBy?.length !== 0 ? (
               <FontAwesomeIcon icon={faHeart} />
             ) : (
-              <FontAwesomeIcon icon={faAngleUp} />
+              <FaRegHeart />
             )}
             {likes?.likeCount > 0 ? likes.likeCount : null}
           </div>
@@ -102,7 +103,7 @@ export const PostCard = ({ post }) => {
             {isPostBookmarked(_id, dataState) ? (
               <FontAwesomeIcon icon={faBookmark} />
             ) : (
-              "bookmark"
+              <FaRegBookmark />
             )}
           </div>
         </div>
