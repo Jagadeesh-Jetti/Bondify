@@ -32,7 +32,6 @@ export const DataProvider = ({ children }) => {
     }
   };
 
-  //   console.log("sduhaiusdfhg");
   const getAllUsers = async () => {
     const userReponse = await getUsers();
     if (userReponse.status === 200) {
