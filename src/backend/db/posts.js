@@ -28,7 +28,7 @@ export const posts = [
       },
     ],
     username: "adarshbalika",
-
+    createdAt: "2022-05-22T10:55:06+05:30",
     updatedAt: formatDate(),
   },
   {
