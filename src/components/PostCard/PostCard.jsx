@@ -1,30 +1,14 @@
 import { useContext } from "react";
 import { DataContext } from "../../contexts/DataContext";
 import "../PostCard/PostCard.css";
-import { likeHandler } from "../../services/APIservices/FunctionalCalls/likeHandler";
-import { dislikeHandler } from "../../services/APIservices/FunctionalCalls/dislikeHandler";
-import { addBookmarkHandler } from "../../services/APIservices/FunctionalCalls/addBookmarkHandler";
-import { isPostBookmarked } from "../../services/checkers/isPostBookmarked";
-import { removeBookmarkHandler } from "../../services/APIservices/FunctionalCalls/removeBookmarkHandler";
 import { deletePostHandler } from "../../services/APIservices/FunctionalCalls/deletePostHandler";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faBookmark } from "@fortawesome/free-solid-svg-icons";
-import { FaRegHeart, FaRegBookmark, FaRegComment } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { PostActions } from "../PostActions/PostActions";
 
 export const PostCard = ({ post }) => {
   const navigate = useNavigate();
   const { dataState, dataDispatch, setEditModal } = useContext(DataContext);
-  const {
-    _id,
-    content,
-    likes,
-    comments,
-    username,
-    mediaURL,
-    createdAt,
-    updatedAt,
-  } = post;
+  const { _id, content, username, mediaURL, createdAt, updatedAt } = post;
 
   const clickedUser = dataState.users.find(
     (user) => user.username.toLowerCase() === username.toLowerCase()
@@ -70,43 +54,7 @@ export const PostCard = ({ post }) => {
             <img src={mediaURL} alt="loading" />
           </div>
         )}
-
-        <div className="post-actions">
-          <div className="post-actions-comment">
-            <FaRegComment />
-            {comments?.length > 0 ? comments?.length : null}
-          </div>
-          <div
-            className="post-actions-like"
-            onClick={() =>
-              likes?.likedBy?.length !== 0
-                ? dislikeHandler(_id, dataDispatch)
-                : likeHandler(_id, dataDispatch)
-            }
-          >
-            {likes?.likedBy?.length !== 0 ? (
-              <FontAwesomeIcon icon={faHeart} />
-            ) : (
-              <FaRegHeart />
-            )}
-            {likes?.likeCount > 0 ? likes.likeCount : null}
-          </div>
-
-          <div
-            className="post-actions-bookmark"
-            onClick={() => {
-              isPostBookmarked(_id, dataState)
-                ? removeBookmarkHandler(_id, dataDispatch)
-                : addBookmarkHandler(_id, dataDispatch);
-            }}
-          >
-            {isPostBookmarked(_id, dataState) ? (
-              <FontAwesomeIcon icon={faBookmark} />
-            ) : (
-              <FaRegBookmark />
-            )}
-          </div>
-        </div>
+        <PostActions post={post} />
       </div>
     </div>
   );
