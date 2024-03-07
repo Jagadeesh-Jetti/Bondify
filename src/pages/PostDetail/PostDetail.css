@@ -28,3 +28,34 @@
     font-weight: bold;
     padding-left: 1rem;
 }
+
+.post-detail-content{
+    padding: 1rem;
+}
+
+.post-time-detail{
+    display: flex;
+   
+    padding-left: 1rem;
+    color:  rgb(176, 171, 171);;
+}
+
+.dot{
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+}
+
+.actions-upperline{
+    width: 36rem;
+    background-color: white;
+    height: 0.1rem;
+    margin: 1rem;
+}
+
+.post-detail-actions{
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+
+
