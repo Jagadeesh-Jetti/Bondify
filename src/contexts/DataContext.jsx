@@ -20,6 +20,11 @@ export const DataProvider = ({ children }) => {
     postId: "",
   });
 
+  const [openPostOptionsModal, SetOpenPostOptionsModal] = useState({
+    modalState: false,
+    postId: "",
+  });
+
   const [editUserModal, setEditUserModal] = useState(false);
 
   const getAllPosts = async () => {
@@ -71,6 +76,8 @@ export const DataProvider = ({ children }) => {
     setUser,
     avatar,
     setAvatar,
+    openPostOptionsModal,
+    SetOpenPostOptionsModal,
   };
 
   return <DataContext.Provider value={values}>{children}</DataContext.Provider>;
