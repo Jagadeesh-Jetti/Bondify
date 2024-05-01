@@ -28,8 +28,6 @@ export const Home = () => {
     });
   };
 
-  const isDisabled = !newPost.content || newPost.content.trim().length === 0;
-
   return (
     <div className="home-main-container">
       <LeftNavLayout />
@@ -85,9 +83,8 @@ export const Home = () => {
             </div>
             <div className="post-input-div">
               <button
-                disabled={isDisabled}
+                disabled={!newPost.content}
                 className="add-post-btn"
-                title={isDisabled ? "Add content" : "Post content"}
                 onClick={handleCreatePost}
               >
                 Post
