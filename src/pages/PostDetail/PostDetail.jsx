@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "../PostDetail/PostDetail.css";
 import { LeftNavLayout } from "../../components/LayoutComponents/LeftNavLayout/LeftNavLayout";
 import { RightSideLayout } from "../../components/LayoutComponents/RightSideLayout/RightSideLayout";
@@ -8,15 +8,24 @@ import { useParams } from "react-router-dom";
 import { DataContext } from "../../contexts/DataContext";
 import { UserCard } from "../../components/UserCard/UserCard";
 import { PostActions } from "../../components/PostActions/PostActions";
+import { CommentsDisplay } from "../../components/CommentsDisplay/CommentsDisplay";
+import { addCommentHandler } from "../../services/APIservices/FunctionalCalls/addCommentHandler";
 
 export const PostDetail = () => {
   let { postId, userId } = useParams();
-  const { dataState } = useContext(DataContext);
+  const { dataState, dataDispatch } = useContext(DataContext);
+  const [commentInput, setCommentInput] = useState("");
+
+  const heroUser = dataState?.loggedInUser;
 
   let post = dataState.posts.find((post) => post._id === postId);
   let user = dataState.users.find((user) => user._id === userId);
 
   const createdDate = new Date(post.createdAt);
+
+  const handleCommentInput = (e) => {
+    setCommentInput(e.target.value);
+  };
 
   const timeOptions = {
     hour: "numeric",
@@ -68,11 +77,37 @@ export const PostDetail = () => {
           <div className="actions-upperline"></div>
         </div>
         <div className="post-reply-container">
-          <div className="post-dp">image</div>
-          <div className="post-reply-text-input">text to be typed</div>
-          <div className="post-reply-button">reply button clickable</div>
+          <div className="post-reply-dp-container">
+            <img
+              src={heroUser.avatarUrl}
+              alt="loading"
+              className="post-reply-dp-image"
+            />
+          </div>
+          <div className="post-reply-text-input">
+            <input
+              type="text"
+              value={commentInput}
+              onChange={handleCommentInput}
+              placeholder="Post your reply"
+            />
+          </div>
+          <div className="post-reply-button">
+            <button
+              disabled={!commentInput}
+              onClick={() =>
+                addCommentHandler(postId, dataDispatch, commentInput)
+              }
+            >
+              {" "}
+              Reply{" "}
+            </button>
+          </div>
         </div>
-        <div className="comment-section"></div>
+
+        <div className="comment-section">
+          <CommentsDisplay post={post} />
+        </div>
       </div>
 
       <RightSideLayout />
