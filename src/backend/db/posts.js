@@ -59,7 +59,7 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        username: "johndoe",
+        username: "iamJay",
         text: "That's mouth watering! Could you make one for my Birthday as well?",
         votes: {
           upvotedBy: [],
@@ -99,7 +99,7 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        username: "carlsmith",
+        username: "madhu9143",
         text: "Happy Birthday! Enjoy your Day!!",
         votes: {
           upvotedBy: [],
@@ -108,7 +108,7 @@ export const posts = [
       },
       {
         _id: uuid(),
-        username: "janedoe",
+        username: "srinivas",
         text: "Wow! Looks Amazzing! Happy Birthday!",
         votes: {
           upvotedBy: [],
@@ -177,7 +177,7 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        username: "sophiajones",
+        username: "vijayKumar",
         text: "Oh! That looks Delicious!",
         votes: {
           upvotedBy: [],
@@ -202,7 +202,7 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        username: "janedoe",
+        username: "srinivas",
         text: "Yes! I am also learning from there!",
         votes: {
           upvotedBy: [],
@@ -226,7 +226,7 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        username: "romabulani",
+        username: "iamJay",
         text: "So True!!",
         votes: {
           upvotedBy: [],
