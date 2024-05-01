@@ -35,7 +35,7 @@
 
 .post-time-detail{
     display: flex;
-   
+    font-size: small;
     padding-left: 1rem;
     color:  rgb(176, 171, 171);;
 }
@@ -57,5 +57,58 @@
     padding-right: 1rem;
 }
 
+.post-reply-container{
+    display: flex;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    align-content: center;
+    border-bottom: 1px solid white;
+}
 
+.post-reply-dp-container{
+    border-radius: 1.2rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    padding: auto;
+}
 
+.post-reply-dp-image{
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5rem;
+}
+
+.post-reply-text-input{
+    padding-left: 0.5rem;
+    width: 27.5rem;
+
+}
+
+.post-reply-text-input input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    color: white;
+    font-size: large;
+    background-color: #141d26;
+}
+
+.post-reply-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-reply-button button{
+    width: 4.4rem;
+    height: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border-radius: 1rem;
+    font-weight: bold;
+    background-color: aliceblue;
+}
+
+.post-reply-button button:hover{
+    cursor: pointer;
+}
