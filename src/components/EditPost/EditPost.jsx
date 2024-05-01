@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useContext, useState } from "react";
 import { DataContext } from "../../contexts/DataContext";
-// import { DataContext } from "../../context/DataContext";
 import "../EditPost/EditPost.css";
 import { DATAACTIONS } from "../../services/actions";
 
