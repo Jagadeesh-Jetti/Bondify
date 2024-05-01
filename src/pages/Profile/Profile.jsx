@@ -35,7 +35,13 @@ export const Profile = () => {
         </div>
         <div className="profilepage-content-body">
           <div className="profilepage-profile">
-            <div className="profilepage-profile-banner"> </div>
+            {/* <div className="profilepage-banner-container">
+              <img
+                src={clickedUser()?.bannerImage}
+                alt="twitter banner"
+                className="profile-banner-image"
+              />
+            </div> */}
             <div className="profilepage-profile-content">
               <div className="profilepage-profile-content-dp-edit">
                 <div className="profilepage-profile-content-dp-parent-container">
@@ -97,7 +103,7 @@ export const Profile = () => {
               </div>
             </div>
           )}
-          {/* <div className="profilepage-profile-navbar"> </div> */}
+
           <div className="profilepage-profile-tweets">
             <PostsLayout data={clickedUserPosts} />
           </div>
