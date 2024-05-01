@@ -1,0 +1,17 @@
+.post-options-component{
+    display: flex;
+    background-color: black;
+    justify-content: center;
+    width: 10rem;
+  
+}
+
+.post-options-container{
+
+}
+
+.post-option{
+    color: white;
+    padding: 0.3rem;
+}
+
