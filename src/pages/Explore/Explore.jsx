@@ -11,6 +11,7 @@ export const Explore = () => {
     <div className="explore-container">
       <LeftNavLayout />
       <div className="explore-middle-container">
+        <div className="explore-header-title">Explore</div>
         <PostsLayout data={dataState?.posts} />
       </div>
 
