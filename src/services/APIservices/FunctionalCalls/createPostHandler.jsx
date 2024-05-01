@@ -12,7 +12,7 @@ export const createPostService = async (post, dataDispatch, setNewPost) => {
       { postData: post },
       { headers: { authorization: encodedToken } }
     );
-
+    console.log(response.data.posts);
     dataDispatch({
       type: DATAACTIONS.SETPOSTS,
       payload: response.data.posts,
