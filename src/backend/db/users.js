@@ -6,6 +6,9 @@ import { formatDate } from "../utils/authUtils";
  * You can add default users of your wish with different attributes
  * */
 
+const defaultBannerImage =
+  "https://dge4uaysoh8oy.cloudfront.net/lp/creatopy/889/images/1630669741167_CTA---Blueberry---5.jpg";
+
 export const users = [
   {
     _id: uuid(),
@@ -15,6 +18,7 @@ export const users = [
     password: "adarshBalika123",
     bio: "Be yourself!",
     bookmarks: [],
+    bannerImage: defaultBannerImage,
     avatarUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1651473734/socialmedia/avatars/adarsh-balika_dct6gm.webp",
     website: "https://romabulani.netlify.app/",
@@ -29,6 +33,7 @@ export const users = [
     password: "vikas123",
     bio: "Hello World",
     bookmarks: [],
+    bannerImage: defaultBannerImage,
     avatarUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1651554207/socialmedia/avatars/john-doe_gbkuda.webp",
     website: "https://google.com/",
@@ -43,6 +48,7 @@ export const users = [
     password: "prahalad123",
     bio: "Whats in bio?",
     bookmarks: [],
+    bannerImage: defaultBannerImage,
     avatarUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1651554256/socialmedia/avatars/jane-doe_il3cvx.webp",
     website: "https://romabulani.netlify.app/",
@@ -56,6 +62,8 @@ export const users = [
     username: "vijayKumar",
     password: "vijay123",
     bio: "Whats in bio?",
+    bookmarks: [],
+    bannerImage: defaultBannerImage,
     avatarUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1651563581/socialmedia/avatars/carl-smith_mehw0u.webp",
     website: "https://romabulani.netlify.app/",
@@ -71,6 +79,7 @@ export const users = [
     password: "srinivas123",
     bio: "Aspiring Frontend Engineer",
     bookmarks: [],
+    bannerImage: defaultBannerImage,
     avatarUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1652525370/socialmedia/avatars/roma.webp",
     website: "https://romabulani.hashnode.dev/",
@@ -86,6 +95,7 @@ export const users = [
     password: "madhu123",
     bio: "What's up?",
     bookmarks: [],
+    bannerImage: defaultBannerImage,
     avatarUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1652525373/socialmedia/avatars/alex-maxwell.webp",
     website: "",
@@ -101,6 +111,7 @@ export const users = [
     password: "Jay123",
     bio: "Frontend Engineer",
     bookmarks: [],
+    bannerImage: defaultBannerImage,
     avatarUrl:
       "https://res.cloudinary.com/dtrjdcrme/image/upload/v1652525510/socialmedia/avatars/sophia-jones.webp",
     website: "",
