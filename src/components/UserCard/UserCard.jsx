@@ -12,15 +12,17 @@ export const UserCard = ({ user, followOption }) => {
     dataState.loggedInUser?.following?.some(({ _id }) => _id === userId);
 
   return (
-    <div
-      className="rsl-usercard"
-      key={user._id}
-      onClick={() => navigate(`/profile/${user.username}`)}
-    >
-      <div className="rsl-usercard-dp-container">
+    <div className="rsl-usercard" key={user._id}>
+      <div
+        className="rsl-usercard-dp-container"
+        onClick={() => navigate(`/profile/${user.username}`)}
+      >
         <img src={user.avatarUrl} alt="loading" className="rsl-usercard-dp" />
       </div>
-      <div className="rsl-usercard-name-card">
+      <div
+        className="rsl-usercard-name-card"
+        onClick={() => navigate(`/profile/${user.username}`)}
+      >
         <div className="rsl-usercard-fullname">
           {user.firstName} {user.lastName}
         </div>
