@@ -8,8 +8,8 @@
   
   .home-middle-container {
     flex: 1;
-    border-left: 1px solid rgb(195, 186, 186);;
-    border-right: 1px solid rgb(195, 186, 186); ;
+    border-left: 1px solid rgb(195, 186, 186);
+    border-right: 1px solid rgb(195, 186, 186); 
     min-width: 38rem;
   }
   
@@ -18,7 +18,7 @@
     padding: 8px;
     display: flex;
     flex-direction: column;
-    border-bottom: 1px solid rgb(195, 186, 186);;
+    border-bottom: 1px solid rgb(195, 186, 186);
   }
   
   .home-middle-header-title {
@@ -55,7 +55,6 @@
     display: flex;
     align-items: flex-start;
     margin-top: 1rem;
-    margin-bottom: 16px;
     border-bottom: 1px solid rgb(195, 186, 186);
   }
   
@@ -63,7 +62,7 @@
     width: 2.5rem;
     height: 2.5rem;
     margin-left: 1rem;
-    margin-right: 0.5rem;
+    margin-right: 0.4rem;
   }
   
   .hml-dp {
@@ -176,13 +175,17 @@
   }
   
   .add-post-btn {
-    width: 5rem;
-    height: 1.7rem;
+    width: 4rem;
+    height: 2rem;
     font-size: 14px;
-    background: rgb(9, 11, 80);
-    color: whitesmoke;
-    border-radius: 5px;
+    font-weight: bold;
+    background-color: aliceblue;
+    border-radius: 1rem;
     border: none;
+  }
+
+  .add-post-btn:hover{
+    cursor: pointer;
   }
 
   .userprofile_modal_outer_div {
