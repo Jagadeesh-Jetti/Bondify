@@ -8,6 +8,7 @@ import { addBookmarkHandler } from "../../services/APIservices/FunctionalCalls/a
 import { removeBookmarkHandler } from "../../services/APIservices/FunctionalCalls/removeBookmarkHandler";
 import { isPostBookmarked } from "../../services/checkers/isPostBookmarked";
 import { DataContext } from "../../contexts/DataContext";
+import "../PostActions/PostActions.css";
 
 export const PostActions = ({ post }) => {
   const { dataState, dataDispatch } = useContext(DataContext);
