@@ -3,34 +3,42 @@
     flex-direction: column;
     flex: wrap;
     width: 52%;
-    /* max-height: 50rem; */
-    /* min-height: 50rem; */
+    max-height: 50rem;
+    min-height: 50rem;
     height: 50rem;
 }
 
 .home-side-nav-content{
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* flex-wrap: wrap; */
     margin-left: 40%;
     margin-bottom: 80%;
 }
 
 .ind-div{
-    font-size: large;
-    margin-top: 1rem;
+    font-size: larger;
+    margin-top: 1rem; 
 }
 
 .ind-div:hover{
-   
+   cursor: pointer;
 }
+
+.ind-div .i{
+    margin-right: 1rem;
+}
+
+.sidebar-icon {
+    width: 10px; 
+}
+  
+.sidebar-text {
+    margin-left: 10px; 
+}
+  
 
 .lsr-userProfile{
     margin-left: 40%;
     display: flex;
     flex-wrap: wrap;
-    
-    /* background-color: aliceblue; */
 }
 
 .image-container{
