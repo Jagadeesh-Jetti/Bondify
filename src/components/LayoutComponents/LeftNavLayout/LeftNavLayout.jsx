@@ -13,17 +13,17 @@ export const LeftNavLayout = () => {
         <h3> Bondify </h3>
         <div className="ind-div" onClick={() => navigate("/home")}>
           <i className="fas fa-home sidebar-icon"></i>
-          Home
+          <span className="sidebar-text">Home</span>
         </div>
 
         <div className="ind-div" onClick={() => navigate("/explore")}>
           <i className="fas fa-search sidebar-icon"></i>
-          Explore
+          <span className="sidebar-text">Explore</span>
         </div>
 
         <div className="ind-div" onClick={() => navigate("/bookmark")}>
           <i className="far fa-bookmark sidebar-icon"></i>
-          Bookmarks{" "}
+          <span className="sidebar-text">Bookmarks</span>
         </div>
 
         <div
@@ -33,11 +33,11 @@ export const LeftNavLayout = () => {
           }
         >
           <i className="far fa-user sidebar-icon"></i>
-          Profile
+          <span className="sidebar-text">Profile</span>
         </div>
         <h3 className="ind-div" onClick={() => navigate("/login")}>
           <i className="fas fa-sign-out-alt sidebar-icon"></i>
-          Logout
+          <span className="sidebar-text">Logout</span>
         </h3>
       </div>
       <div
